@@ -1,4 +1,9 @@
 package app.controller.dto;
 
-public record CreateUserDto(String username, String email, String password) {
+import jakarta.validation.constraints.NotBlank;
+
+public record CreateUserDto(
+        @NotBlank String username,
+        @NotBlank String email,
+        @NotBlank String password) {
 }
