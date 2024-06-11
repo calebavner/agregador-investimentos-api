@@ -1,5 +1,7 @@
 package app.controller;
 
+import app.controller.dto.AccountResponseDto;
+import app.controller.dto.CreateAccountDto;
 import app.controller.dto.CreateUserDto;
 import app.model.User;
 import app.service.UserService;
@@ -46,5 +48,18 @@ public class UserController {
     public ResponseEntity<Void> deleteUser(@PathVariable @Valid UUID userId) {
         userService.deleteUser(userId);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/{userId}/accounts")
+    public ResponseEntity<Void> createAccount(@PathVariable UUID userId,
+                                              @RequestBody CreateAccountDto dto) {
+        userService.createAccount(userId, dto);
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/{userId}/accounts")
+    public ResponseEntity<List<AccountResponseDto>> createAccount(@PathVariable UUID userId) {
+        var accounts = userService.listAllAccounts(userId);
+        return ResponseEntity.ok(accounts);
     }
 }

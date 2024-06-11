@@ -1,6 +1,5 @@
-package app.controller;
+package app.exceptions;
 
-import app.exceptions.AppException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.MethodArgumentNotValidException;
